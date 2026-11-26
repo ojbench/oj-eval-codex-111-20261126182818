@@ -5,7 +5,9 @@
 #include <string>
 #include <vector>
 
+namespace sjtu {
 #include "../src.hpp"
+}
 
 void check(const std::string &input, const std::vector<std::string> &delimiters) {
     std::vector<char> actual(input.begin(), input.end());
