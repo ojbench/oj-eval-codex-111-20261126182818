@@ -14,7 +14,7 @@ void check(const std::string &input, const std::vector<std::string> &delimiters)
     char *state = nullptr;
     for (unsigned i = 0; i < input.size() + 4; ++i) {
         const char *delim = delimiters[i % delimiters.size()].c_str();
-        char *a = ::strtok(i == 0 ? actual.data() : nullptr, delim);
+        char *a = sjtu::strtok(i == 0 ? actual.data() : nullptr, delim);
         char *b = ::strtok_r(i == 0 ? expected.data() : nullptr, delim, &state);
         assert((a == nullptr) == (b == nullptr));
         if (a != nullptr) {
@@ -35,9 +35,9 @@ int main() {
     check("textabcwdefwghi", {"w"});
     char first[] = "a,b";
     char second[] = "c:d";
-    assert(std::strcmp(::strtok(first, ","), "a") == 0);
-    assert(std::strcmp(::strtok(second, ":"), "c") == 0);
-    assert(std::strcmp(::strtok(nullptr, ":"), "d") == 0);
+    assert(std::strcmp(sjtu::strtok(first, ","), "a") == 0);
+    assert(std::strcmp(sjtu::strtok(second, ":"), "c") == 0);
+    assert(std::strcmp(sjtu::strtok(nullptr, ":"), "d") == 0);
 
     std::mt19937 random(1351);
     for (int trial = 0; trial < 20000; ++trial) {

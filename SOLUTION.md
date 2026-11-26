@@ -1,6 +1,6 @@
 # Solution
 
-`src.hpp` implements the required global `strtok` function without includes,
+`src.hpp` implements the required `sjtu::strtok` function without includes,
 standard-library calls, or global variables. A function-local static pointer
 stores the remaining input. Each call builds a delimiter lookup table, skips
 leading delimiters, and returns the next nonempty token, replacing its trailing
@@ -30,3 +30,12 @@ g++ -std=c++17 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -g tests/st
 ```
 
 The advertised `data_test` directory was not present in the supplied data.
+
+## Judge integration
+
+Submission 879599 failed to compile because the endpoint compiled the Git URL
+as literal header contents. Its diagnostic also revealed that the actual judge
+driver uses `sjtu::strtok`, whereas the supplied handout uses a global function.
+The implementation and regression tests now use the judge's namespace. The
+client supports `submit --problem-id 1351 --source-file src.hpp` to send the
+header contents directly using the endpoint's configured compiler.
