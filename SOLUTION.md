@@ -41,3 +41,8 @@ Submission 879602 showed that the judge itself wraps the header in namespace
 and the regression test includes it inside `sjtu` to match the judge.
 The client supports `submit --problem-id 1351 --source-file src.hpp` to send
 the header contents directly using the endpoint's configured compiler.
+
+Submission 879606 was Accepted with 100/100 points across all 10 test groups.
+Each test used 37-39 ms; peak reported memory was 4,038,656 bytes. This was the
+third of five allowed submissions. The accepted implementation is in commit
+`a164c38`; the subsequent documentation commit records this result.
